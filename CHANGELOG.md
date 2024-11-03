@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.41.0](https://github.com/RamaRaju-vj/DMDD_Team16_MBTA_Project/compare/v1.0.1...v1.41.0) (2024-11-03)
+
+
+### Features
+
+* test the post-commit hook ([3898fe4](https://github.com/RamaRaju-vj/DMDD_Team16_MBTA_Project/commit/3898fe4e5289783e77d9422e5b517c5b4cfb6f80))
+
 ## [1.40.0](https://github.com/RamaRaju-vj/DMDD_Team16_MBTA_Project/compare/v1.0.1...v1.40.0) (2024-11-03)
 
 
