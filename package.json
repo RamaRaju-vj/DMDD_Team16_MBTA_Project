@@ -1,6 +1,6 @@
 {
   "name": "DMDD_Team16_MBTA_Project",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "added standard version  This has SQL Code for MBTA Project",
   "main": "release.config.js",
   "scripts": {
