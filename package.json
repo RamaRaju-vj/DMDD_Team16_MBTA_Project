@@ -1,5 +1,5 @@
 {
-  "version": "1.29.0",
+  "version": "1.30.0",
   "devDependencies": {
     "commitizen": "^4.3.1",
     "standard-version": "^9.5.0",
