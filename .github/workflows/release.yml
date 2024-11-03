@@ -1,12 +1,14 @@
 name: Release
 
 on:
-  push:
+  pull_request:
+    types: [closed] # Triggers only when a PR is closed
     branches:
       - main
 
 jobs:
   release:
+    if: github.event.pull_request.merged == true # Ensures it only runs on merges
     permissions:
       contents: write
       issues: write
