@@ -28,3 +28,15 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('Cancellation request processed successfully for Ticket ID: ' || ticket_id);
 END;
 /
+
+
+
+BEGIN
+    EXECUTE IMMEDIATE 'GRANT EXECUTE ON MBTA_ADMIN.is_ticket_used TO CUSTOMER_USER';
+    EXECUTE IMMEDIATE 'GRANT EXECUTE ON MBTA_ADMIN.get_transaction_details TO CUSTOMER_USER';
+    EXECUTE IMMEDIATE 'GRANT EXECUTE ON MBTA_ADMIN.cancellation_pkg TO CUSTOMER_USER';
+    EXECUTE IMMEDIATE 'GRANT EXECUTE ON MBTA_ADMIN.request_cancellation TO CUSTOMER_USER';
+    DBMS_OUTPUT.PUT_LINE('Execute privileges granted to CUSTOMER_USER.');
+END;
+/
+
