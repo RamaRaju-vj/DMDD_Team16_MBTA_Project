@@ -30,9 +30,13 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('Granted SELECT on Refunds_Cancellation_Summary to CASHIER_ROLE.');
     EXECUTE IMMEDIATE 'GRANT SELECT ON MBTA_ADMIN.Refunds_Cancellation_Summary TO ADMIN_ROLE';
     DBMS_OUTPUT.PUT_LINE('Granted SELECT on Refunds_Cancellation_Summary to ADMIN_ROLE.');
-    
-    -- Grant SELECT on Customer_Ticket_Subscription to CUSTOMER_ROLE
-    EXECUTE IMMEDIATE 'GRANT SELECT ON MBTA_ADMIN.Customer_Ticket_Subscription TO CUSTOMER_ROLE';
-    DBMS_OUTPUT.PUT_LINE('Granted SELECT on Customer_Ticket_Subscription to CUSTOMER_ROLE.');
+
+    -- Grant SELECT on Customer_Tickets to CUSTOMER_ROLE
+    EXECUTE IMMEDIATE 'GRANT SELECT ON MBTA_ADMIN.Customer_Tickets TO CUSTOMER_ROLE';
+    DBMS_OUTPUT.PUT_LINE('Granted SELECT on Customer_Tickets to CUSTOMER_ROLE.');
+
+    -- Grant SELECT on Customer_Subscriptions to CUSTOMER_ROLE
+    EXECUTE IMMEDIATE 'GRANT SELECT ON MBTA_ADMIN.Customer_Subscriptions TO CUSTOMER_ROLE';
+    DBMS_OUTPUT.PUT_LINE('Granted SELECT on Customer_Subscriptions to CUSTOMER_ROLE.');
 END;
 /
