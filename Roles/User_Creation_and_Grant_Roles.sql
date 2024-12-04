@@ -94,7 +94,7 @@ BEGIN
     IF user_count = 0 THEN
         EXECUTE IMMEDIATE 'CREATE USER customer_user IDENTIFIED BY "CustomerUser@12345"';
         EXECUTE IMMEDIATE 'GRANT CUSTOMER_ROLE TO customer_user';
-        EXECUTE IMMEDIATE 'GRANT CREATE SESSION, UNLIMITED TABLESPACE TO customer_user';
+        EXECUTE IMMEDIATE 'GRANT CREATE SESSION TO customer_user';
         DBMS_OUTPUT.PUT_LINE('User "customer_user" created and assigned CUSTOMER_ROLE with CREATE SESSION and UNLIMITED TABLESPACE privileges.');
     ELSE
         DBMS_OUTPUT.PUT_LINE('User "customer_user" already exists. Skipping password update...');
@@ -105,7 +105,7 @@ BEGIN
     IF user_count = 0 THEN
         EXECUTE IMMEDIATE 'CREATE USER cashier_user IDENTIFIED BY "CashierUser@12345"';
         EXECUTE IMMEDIATE 'GRANT CASHIER_ROLE TO cashier_user';
-        EXECUTE IMMEDIATE 'GRANT CREATE SESSION, UNLIMITED TABLESPACE TO cashier_user';
+        EXECUTE IMMEDIATE 'GRANT CREATE SESSION TO cashier_user';
         DBMS_OUTPUT.PUT_LINE('User "cashier_user" created and assigned CASHIER_ROLE with CREATE SESSION and UNLIMITED TABLESPACE privileges.');
     ELSE
         DBMS_OUTPUT.PUT_LINE('User "cashier_user" already exists. Skipping password update...');
@@ -116,7 +116,7 @@ BEGIN
     IF user_count = 0 THEN
         EXECUTE IMMEDIATE 'CREATE USER group_booking_manager_user IDENTIFIED BY "GroupBookingManager@12345"';
         EXECUTE IMMEDIATE 'GRANT GROUP_BOOKING_MANAGER_ROLE TO group_booking_manager_user';
-        EXECUTE IMMEDIATE 'GRANT CREATE SESSION, UNLIMITED TABLESPACE TO group_booking_manager_user';
+        EXECUTE IMMEDIATE 'GRANT CREATE SESSION TO group_booking_manager_user';
         DBMS_OUTPUT.PUT_LINE('User "group_booking_manager_user" created and assigned GROUP_BOOKING_MANAGER_ROLE with CREATE SESSION and UNLIMITED TABLESPACE privileges.');
     ELSE
         DBMS_OUTPUT.PUT_LINE('User "group_booking_manager_user" already exists. Skipping password update...');
@@ -127,7 +127,7 @@ BEGIN
     IF user_count = 0 THEN
         EXECUTE IMMEDIATE 'CREATE USER subscription_manager_user IDENTIFIED BY "SubscriptionManager@12345"';
         EXECUTE IMMEDIATE 'GRANT SUBSCRIPTION_MANAGER_ROLE TO subscription_manager_user';
-        EXECUTE IMMEDIATE 'GRANT CREATE SESSION, UNLIMITED TABLESPACE TO subscription_manager_user';
+        EXECUTE IMMEDIATE 'GRANT CREATE SESSION TO subscription_manager_user';
         DBMS_OUTPUT.PUT_LINE('User "subscription_manager_user" created and assigned SUBSCRIPTION_MANAGER_ROLE with CREATE SESSION and UNLIMITED TABLESPACE privileges.');
     ELSE
         DBMS_OUTPUT.PUT_LINE('User "subscription_manager_user" already exists. Skipping password update...');
