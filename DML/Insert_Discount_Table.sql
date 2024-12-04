@@ -1,48 +1,70 @@
 SET SERVEROUTPUT ON;
 
--- Insert required records into the DISCOUNTS table to satisfy foreign key constraints in GROUP_BOOKING
-DECLARE
-    discount_exists INTEGER;
+-- Delete data from all tables
 BEGIN
-    -- Insert discount with discount_id_pk = 0 (Regular)
-    SELECT COUNT(*) INTO discount_exists FROM discounts WHERE discount_id_pk = 0;
-    IF discount_exists = 0 THEN
-        INSERT INTO discounts (discount_id_pk, discount_type, discount_rate)
-        VALUES (0, 'Regular', 0);
-        DBMS_OUTPUT.PUT_LINE('Discount "Regular" with ID 0 inserted.');
-    ELSE
-        DBMS_OUTPUT.PUT_LINE('Discount "Regular" with ID 0 already exists.');
-    END IF;
+    EXECUTE IMMEDIATE 'DELETE FROM txn_tbl';
+    EXECUTE IMMEDIATE 'DELETE FROM rds';
+    EXECUTE IMMEDIATE 'DELETE FROM subs';
+    EXECUTE IMMEDIATE 'DELETE FROM grp_bkg';
+    EXECUTE IMMEDIATE 'DELETE FROM tkt';
+    EXECUTE IMMEDIATE 'DELETE FROM usr_tbl';
+    DBMS_OUTPUT.PUT_LINE('All data deleted from tables successfully.');
+END;
+/
 
-    -- Insert discount with discount_id_pk = 1 (Student)
-    SELECT COUNT(*) INTO discount_exists FROM discounts WHERE discount_id_pk = 1;
-    IF discount_exists = 0 THEN
-        INSERT INTO discounts (discount_id_pk, discount_type, discount_rate)
-        VALUES (1, 'Student', 5.00);
-        DBMS_OUTPUT.PUT_LINE('Discount "Student" with ID 1 inserted.');
-    ELSE
-        DBMS_OUTPUT.PUT_LINE('Discount "Student" with ID 1 already exists.');
-    END IF;
+-- Drop existing sequences
+DECLARE
+    seq_count NUMBER;
+BEGIN
+    FOR seq_name IN (
+        SELECT sequence_name
+        FROM user_sequences
+        WHERE sequence_name IN (
+            'USER_SEQ_PK', 'TRANSACTION_SEQ_PK', 'RIDES_SEQ_PK', 'SUBSCRIPTION_SEQ_PK', 'TICKET_SEQ_PK', 'GROUPBOOKING_SEQ_PK'
+        )
+    ) LOOP
+        EXECUTE IMMEDIATE 'DROP SEQUENCE ' || seq_name.sequence_name;
+        DBMS_OUTPUT.PUT_LINE('Sequence "' || seq_name.sequence_name || '" dropped successfully.');
+    END LOOP;
+END;
+/
 
-    -- Insert discount with discount_id_pk = 2 (Senior)
-    SELECT COUNT(*) INTO discount_exists FROM discounts WHERE discount_id_pk = 2;
-    IF discount_exists = 0 THEN
-        INSERT INTO discounts (discount_id_pk, discount_type, discount_rate)
-        VALUES (2, 'Senior', 10.00);
-        DBMS_OUTPUT.PUT_LINE('Discount "Senior" with ID 2 inserted.');
-    ELSE
-        DBMS_OUTPUT.PUT_LINE('Discount "Senior" with ID 2 already exists.');
-    END IF;
+-- Recreate sequences
+DECLARE
+    seq_names SYS.ODCIVARCHAR2LIST := SYS.ODCIVARCHAR2LIST(
+        'USER_SEQ_PK', 'TRANSACTION_SEQ_PK', 'RIDES_SEQ_PK', 'SUBSCRIPTION_SEQ_PK', 'TICKET_SEQ_PK', 'GROUPBOOKING_SEQ_PK'
+    );
+BEGIN
+    FOR i IN 1..seq_names.COUNT LOOP
+        EXECUTE IMMEDIATE 'CREATE SEQUENCE ' || seq_names(i) || ' START WITH 1 INCREMENT BY 1';
+        DBMS_OUTPUT.PUT_LINE('Sequence "' || seq_names(i) || '" created successfully.');
+    END LOOP;
+END;
+/
 
-    -- Insert discount with discount_id_pk = 3 (Group)
-    SELECT COUNT(*) INTO discount_exists FROM discounts WHERE discount_id_pk = 3;
-    IF discount_exists = 0 THEN
-        INSERT INTO discounts (discount_id_pk, discount_type, discount_rate)
-        VALUES (3, 'Group', 5.00);
-        DBMS_OUTPUT.PUT_LINE('Discount "Group" with ID 3 inserted.');
-    ELSE
-        DBMS_OUTPUT.PUT_LINE('Discount "Group" with ID 3 already exists.');
-    END IF;
+
+
+
+-- Step 1: Delete data from the discounts table
+BEGIN
+    EXECUTE IMMEDIATE 'DELETE FROM disc';
+    DBMS_OUTPUT.PUT_LINE('All data deleted from discounts table successfully.');
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error occurred while deleting data from discounts table.');
+END;
+/
+
+-- Step 2: Insert data into the discounts table
+BEGIN
+    INSERT INTO disc (discount_id_pk, discount_type, discount_rate) VALUES (0, 'Regular', 0);
+    INSERT INTO disc (discount_id_pk, discount_type, discount_rate) VALUES (1, 'Student', 5.00);
+    INSERT INTO disc (discount_id_pk, discount_type, discount_rate) VALUES (2, 'Senior', 10.00);
+    INSERT INTO disc (discount_id_pk, discount_type, discount_rate) VALUES (3, 'Group Booking', 5.00);
+    DBMS_OUTPUT.PUT_LINE('Data inserted into discounts table successfully.');
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error occurred while inserting data into discounts table.');
 END;
 /
 
