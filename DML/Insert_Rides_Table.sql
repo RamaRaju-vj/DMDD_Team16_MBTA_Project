@@ -1,5 +1,5 @@
 SET SERVEROUTPUT ON ;
--- Delete data from rides table and reinsert
+-- Delete data from rides table and reinsert.
 BEGIN
     EXECUTE IMMEDIATE 'DELETE FROM rds';
     DBMS_OUTPUT.PUT_LINE('All data deleted from rides table successfully.');

@@ -1,5 +1,5 @@
 SET SERVEROUTPUT ON ;
--- Delete data from transaction table and reinsert
+-- Delete data from transaction table and reinsert.
 BEGIN
     EXECUTE IMMEDIATE 'DELETE FROM txn_tbl';
     DBMS_OUTPUT.PUT_LINE('All data deleted from transaction table successfully.');
