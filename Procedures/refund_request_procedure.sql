@@ -1,7 +1,7 @@
 SET SERVEROUTPUT ON;
 
 BEGIN
-    -- Drop the procedure if it exists
+    -- Drop the procedure if it exists.
     BEGIN
         EXECUTE IMMEDIATE 'DROP PROCEDURE MBTA_ADMIN.process_refund_request';
         DBMS_OUTPUT.PUT_LINE('Procedure "process_refund_request" dropped successfully.');
