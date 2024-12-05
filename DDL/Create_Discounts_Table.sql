@@ -11,8 +11,9 @@ END;
 CREATE TABLE discounts (
     discount_id_pk INTEGER PRIMARY KEY,
     discount_type VARCHAR2(50),
-    discount_rate NUMBER(5,2)
+    discount_rate NUMBER(5,2)
 );
+
 
 
 
