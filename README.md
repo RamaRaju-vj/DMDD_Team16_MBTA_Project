@@ -50,5 +50,7 @@ Step 9: Execute VIEWS related permissions (LOGIN AS MBTA ADMIN)
 File Path: Role/ Views_permission_mbta_admin.sql
 
 Step 10:Execute the Functions
+
 Step 11:Execute the Packages
+
 Step 12: Execute the Procedure
