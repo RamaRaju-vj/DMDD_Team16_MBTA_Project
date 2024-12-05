@@ -12,38 +12,6 @@ BEGIN
 END;
 /
 
--- Drop existing sequences
-DECLARE
-    seq_count NUMBER;
-BEGIN
-    FOR seq_name IN (
-        SELECT sequence_name
-        FROM user_sequences
-        WHERE sequence_name IN (
-            'USER_SEQ_PK', 'TRANSACTION_SEQ_PK', 'RIDES_SEQ_PK', 'SUBSCRIPTION_SEQ_PK', 'TICKET_SEQ_PK', 'GROUPBOOKING_SEQ_PK'
-        )
-    ) LOOP
-        EXECUTE IMMEDIATE 'DROP SEQUENCE ' || seq_name.sequence_name;
-        DBMS_OUTPUT.PUT_LINE('Sequence "' || seq_name.sequence_name || '" dropped successfully.');
-    END LOOP;
-END;
-/
-
--- Recreate sequences
-DECLARE
-    seq_names SYS.ODCIVARCHAR2LIST := SYS.ODCIVARCHAR2LIST(
-        'USER_SEQ_PK', 'TRANSACTION_SEQ_PK', 'RIDES_SEQ_PK', 'SUBSCRIPTION_SEQ_PK', 'TICKET_SEQ_PK', 'GROUPBOOKING_SEQ_PK'
-    );
-BEGIN
-    FOR i IN 1..seq_names.COUNT LOOP
-        EXECUTE IMMEDIATE 'CREATE SEQUENCE ' || seq_names(i) || ' START WITH 1 INCREMENT BY 1';
-        DBMS_OUTPUT.PUT_LINE('Sequence "' || seq_names(i) || '" created successfully.');
-    END LOOP;
-END;
-/
-
-
-
 
 -- Step 1: Delete data from the discounts table
 BEGIN
