@@ -37,17 +37,18 @@ File Path: Roles/Mbta_Table_Synonym_MBTA_Admin.sql
  - File Path: DML/ Insert_Rides_Table.sql
  
 File Path: DML/ Insert_Subscription_Table.sql
- Step 6: Create Users and Roles (login as mbta admin)
+
+Step 6: Drop users and roles
+File Path: Role/ Drop_User_Creation_and_Grant_Roles.sql
+
+ Step 7: Create Users and Roles (login as mbta admin)
 File Path: Role/ User_Creation_and_Grant_Roles.sql
  
-Step 7: Create Views (Login as Mbta admin) (exec all views as admin) File Path : Views/Views_Creation_mbta_admin/
- Step 8: Execute VIEWS related permissions (LOGIN AS MBTA ADMIN)
+Step 8: Create Views (Login as Mbta admin) (exec all views as admin) File Path : Views/Views_Creation_mbta_admin/
+
+Step 9: Execute VIEWS related permissions (LOGIN AS MBTA ADMIN)
 File Path: Role/ Views_permission_mbta_admin.sql
- 
-Step 9: Exec Views
-File Path : Views/Exec_Views/ Exec_group_booking_view_gbManager
-Login as group booking manager
-File Path: Views/Exec_Views/ Exec_Subscription_utilization_view_Subscription_manager.sql
- 
- File Path: Views/Exec_Views/ Exec_Transaction_Summary_view_cashier_user.sql
- 
+
+Step 10:Execute the Functions
+Step 11:Execute the Packages
+Step 12: Execute the Procedure
