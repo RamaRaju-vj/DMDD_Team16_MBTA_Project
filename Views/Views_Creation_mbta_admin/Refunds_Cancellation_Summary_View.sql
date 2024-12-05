@@ -1,6 +1,6 @@
 -- Create Refunds_Cancellation_Summary View
 
-    CREATE VIEW REFUNDS_CANCELLATION_SUMMARY AS
+    CREATE OR REPLACE VIEW REFUNDS_CANCELLATION_SUMMARY AS
     SELECT 
         t.transaction_id_pk AS transaction_id,
         t.ticket_id_fk AS ticket_id,
@@ -10,5 +10,5 @@
     FROM 
         MBTA_ADMIN.transaction_table t
     WHERE 
-        t.refund_status = ''Refunded'' OR t.transaction_status = ''Cancelled'';
+        t.refund_status = 'Refunded' OR t.transaction_status = 'Cancelled';
   
