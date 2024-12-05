@@ -35,14 +35,10 @@ BEGIN
         INSERT INTO grp_bkg (group_booking_id_pk, user_id_fk, num_passengers, booking_date, transit_line, transaction_status, discounts_discount_id_pk, total_amount)
         VALUES (groupBooking_seq_pk.NEXTVAL, 5, 6, SYSDATE, 'Green Line', 'Approved', 3, 6 * base_price * 0.95);
 
-        -- Additional Group Booking: Maximum passengers (15, 5% discount applied)
-        INSERT INTO grp_bkg (group_booking_id_pk, user_id_fk, num_passengers, booking_date, transit_line, transaction_status, discounts_discount_id_pk, total_amount)
-        VALUES (groupBooking_seq_pk.NEXTVAL, 6, 15, SYSDATE, 'Blue Line', 'Approved', 3, 15 * base_price * 0.95);
-
         DBMS_OUTPUT.PUT_LINE('Data inserted into group_booking table successfully.');
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE('Error occurred while inserting data into group_booking table.');
+            DBMS_OUTPUT.PUT_LINE('Error occurred while inserting data into group_booking table');
     END;
 END;
 /
